@@ -1,0 +1,24 @@
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        BigInteger originNum = BigInteger.valueOf(-1);
+        System.out.print("Enter number: ");
+        int result = originNum.compareTo(BigInteger.valueOf(0));
+        while (result < 0) {
+            originNum = input.nextBigInteger();
+            result = originNum.compareTo(BigInteger.valueOf(0));
+        }
+        System.out.println("The factorial of " + originNum + " is " + factorialOf(originNum) + ".");
+    }
+
+    public static BigInteger factorialOf(BigInteger originNum){
+        int result = originNum.compareTo(BigInteger.valueOf(1));
+        if (result > 0) {
+            return originNum.multiply(factorialOf(originNum.subtract(BigInteger.valueOf(1))));
+        }
+        return BigInteger.valueOf(1);
+    }
+}
